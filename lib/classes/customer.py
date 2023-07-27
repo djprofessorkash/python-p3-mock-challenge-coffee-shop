@@ -44,11 +44,51 @@
 class Customer:
     def __init__(self, name):
         self.name = name
+        # A customer has many orders.
+        self._orders = []
+        # A customer has many coffees.
+        self._coffees = []
+
+    # Initialize Property: `Customer.name`
+    @property
+    def name(self):
+        return self._name
+    
+    # Functionalize Property with Setter: `Customer.name`
+    @name.setter
+    def name(self, name):
+        # Create validations for data type (str) and length requirements of property
+        NAME_IS_STR = (isinstance(name, str))
+        NAME_IS_WITHIN_ACCEPTABLE_LENGTH = (1 <= len(name) <= 15)
         
+        # Conditionally validate property to set property
+        if NAME_IS_STR and NAME_IS_WITHIN_ACCEPTABLE_LENGTH:
+            self._name = name
+        else:
+            raise Exception("Unacceptable data format for `Customer.name`!")
+        
+    # Add functionality to `Customer.orders()`
     def orders(self, new_order=None):
         from classes.order import Order
-        pass
+
+        # Create validations for data type (Order) and instantiation of property
+        ORDER_IS_INSTANTIATED = (new_order is not None)
+        ORDER_IS_ORDER = (isinstance(new_order, Order))
+
+        # Conditionally validate property to extend property list
+        if ORDER_IS_INSTANTIATED and ORDER_IS_ORDER:
+            self._orders.append(new_order)
+        return self._orders
     
+    # Add functionality to `Customer.coffees()`
     def coffees(self, new_coffee=None):
         from classes.coffee import Coffee
-        pass
+
+        # Create validations for data type (Coffee) and uniqueness of property
+        COFFEE_IS_UNIQUE = (new_coffee not in self._coffees)
+        COFFEE_IS_COFFEE = (isinstance(new_coffee, Coffee))
+
+        # Conditionally validate property to extend property list
+        if COFFEE_IS_UNIQUE and COFFEE_IS_COFFEE:
+            self._coffees.append(new_coffee)
+        return self._coffees
