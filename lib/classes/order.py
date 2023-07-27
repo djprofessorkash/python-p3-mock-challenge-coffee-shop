@@ -9,27 +9,29 @@
 
 [OOPD] Order Class: Initialization/Properties.
 
-    • METHOD: `Order.__init__(self, customer, coffee, price)`
+    • INITIALIZER: `Order.__init__(self, customer, coffee, price)`
         --> Orders should be initialized with a customer, coffee, and a price (a number)
     • PROPERTY: `Order.price`
-        --> PROPERTY INITIALIZATION: `@property`
+        --> PROPERTY INITIALIZATION: `@property; def price(self)`
             --> Returns the price for a coffee
-        --> PROPERTY SETTER: `@price.setter`
+        --> PROPERTY SETTER: `@price.setter; def price(self, price)`
             --> Returns the price for a coffee
             --> Price must be a number between 1 and 10, inclusive
                 --> `raise Exception` if setter fails
+    • PROPERTY: `Order.customer`
+        --> PROPERTY INITIALIZATION: `@property; def customer(self)`
+            --> Returns the customer object for that order
+        --> PROPERTY SETTER: `@customer.setter; def customer(self, customer)`
+            --> Must be of type Customer
+                --> `raise Exception` if setter fails
+    • PROPERTY: `Order.coffee`
+        --> PROPERTY INITIALIZATION: `@property; def coffee(self)`
+            --> Returns the coffee object for that order
+        --> PROPERTY SETTER: `@coffee.setter; def coffee(self, coffee)`
+            --> Must be of type Coffee
+                --> `raise Exception` if setter fails
 
 [OOPD] Order Class: Relationships: Basic Methods/Properties.
-
-    • METHOD: `Order.customer(self, new_customer=None)`
-        --> Returns the customer object for that order
-        --> Must be of type Customer
-            --> `raise Exception` if setter fails
-
-    • METHOD: `Order.coffee(self, new_coffee=None)`
-        --> Returns the coffee object for that order
-        --> Must be of type Coffee
-            --> `raise Exception` if setter fails
 """
 class Order:
 

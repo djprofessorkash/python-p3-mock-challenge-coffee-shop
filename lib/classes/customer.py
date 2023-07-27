@@ -10,16 +10,16 @@
 
 [OOPD] Customer Class: Initialization/Properties.
 
-    • METHOD: `Customer.__init__(self, name)`
+    • INITIALIZER: `Customer.__init__(self, name)`
         --> Customer should be initialized with a name
     • PROPERTY: `Customer.name`
-        --> PROPERTY INITIALIZATION: `@property`
-            --> Returns name
+        --> PROPERTY INITIALIZATION: `@property; def name(self)`
+            --> Returns the customer's name, as a string
         --> PROPERTY SETTER: `@name.setter`
             --> Names must be of type str
             --> Names must be between 1 and 15 characters, inclusive
             --> If you are using exceptions, uncomment lines 26-27 and 34-38 in customer_test.py.
-                --> raise Exception if setter fails
+                --> `raise Exception` if setter fails
 
 [OOPD] Customer Class: Relationships: Basic Methods/Properties.
 
