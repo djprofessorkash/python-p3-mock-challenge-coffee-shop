@@ -10,10 +10,10 @@
 
 [OOPD] Coffee Class: Initialization/Properties.
 
-    • METHOD: `Coffee.__init__(self, name)`
+    • INITIALIZER: `Coffee.__init__(self, name)`
         --> Coffee should be initialized with a name
     • PROPERTY: `Coffee.name`
-        --> PROPERTY INITIALIZATION: `@property`
+        --> PROPERTY INITIALIZATION: `@property; def name(self)`
             --> Returns the coffee's name
         --> PROPERTY SETTER: `@name.setter`
             --> Should not be able to change after the coffee is created
@@ -24,15 +24,15 @@
 [OOPD] Coffee Class: Relationships: Basic Methods/Properties.
 
     • METHOD: `Coffee.orders(self, new_order=None)`
-        --> Adds new orders to coffee
+        --> Adds `new_order` to `Coffee`'s orders
         --> Returns a list of all orders for that coffee
         --> orders must be of type `Order`
         --> Will be called from `Order.__init__`
 
     • METHOD: `Coffee.customers(self, new_customer=None)`
         --> Adds new customers to coffee
-        --> Returns a unique list of all customers who have ordered a particular coffee.
-        --> Customers must be of type `Customer`
+        --> Returns a list of all unique customers who have ordered a particular coffee (i.e. the list will not contain the same customer more than once).
+            --> The list must only contain objects of type `Customer`
         --> Will be called from `Order.__init__`
 
 [OOPD] Coffee Class: Relationships: Aggregate/Associative Methods.
