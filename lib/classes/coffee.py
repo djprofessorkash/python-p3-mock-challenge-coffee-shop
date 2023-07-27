@@ -52,17 +52,65 @@ class Coffee:
         self._orders = []
         # A coffee has many customers.
         self._customers = []
+
+    # Initialize Property: `Coffee.name`
+    @property
+    def name(self):
+        return self._name
+    
+    # Functionalize Property with Setter: `Coffee.name`
+    @name.setter
+    def name(self, name):
+        # Create validations for data type (str) and existence of property
+        NAME_IS_STR = (type(name) == str)
+        NAME_EXISTS = (not hasattr(self, "name"))
         
+        # Conditionally validate property to set property
+        if NAME_IS_STR and NAME_EXISTS:
+            self._name = name
+        else:
+            raise Exception("`Coffee.name` already exists!")
+        
+    # Add functionality to `Coffee.orders()`
     def orders(self, new_order=None):
         from classes.order import Order
-        pass
+
+        # Create validations for data type (Order) and instantiation of property
+        ORDER_IS_INSTANTIATED = (new_order is not None)
+        ORDER_IS_ORDER = (isinstance(new_order, Order))
+
+        # Conditionally validate property to extend property list
+        if ORDER_IS_INSTANTIATED and ORDER_IS_ORDER:
+            self._orders.append(new_order)
+        return self._orders
     
+    # Add functionality to `Coffee.customers()`
     def customers(self, new_customer=None):
         from classes.customer import Customer
-        pass
+
+        # Create validations for data type (Customer) and uniqueness of property
+        CUSTOMER_IS_UNIQUE = (new_customer not in self._customers)
+        CUSTOMER_IS_CUSTOMER = (isinstance(new_customer, Customer))
+
+        # Conditionally validate property to extend property list
+        if CUSTOMER_IS_UNIQUE and CUSTOMER_IS_CUSTOMER:
+            self._customers.append(new_customer)
+        return self._customers
     
+    # Add functionality to `Coffee.num_orders()`
     def num_orders(self):
-        pass
+        # Return length of orders property list
+        return len(self._orders)
     
+    # Add functionality to `Coffee.average_price()`
     def average_price(self):
-        pass
+        # Calculate total price across all orders
+        total_price = 0
+        for order in self._orders:
+            total_price += order.price
+        # Return average price (total price divided by number of orders)
+        return total_price / len(self._orders)
+        """ We can also do this... """
+        return total_price / self.num_orders()
+        """ ...and this... """
+        return sum([order.price for order in self_orders]) / self.num_orders()
