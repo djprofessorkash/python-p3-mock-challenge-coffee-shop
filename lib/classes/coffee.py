@@ -48,10 +48,6 @@
 class Coffee:
     def __init__(self, name):
         self.name = name
-        # A coffee has many orders.
-        self._orders = []
-        # A coffee has many customers.
-        self._customers = []
         
     def orders(self, new_order=None):
         from classes.order import Order
